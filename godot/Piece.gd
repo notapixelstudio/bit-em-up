@@ -8,8 +8,8 @@ signal hit
 # variables
 var speed = 250
 
-func tick():
-	anim.play()
+func tick(animation = "Dance"):
+	anim.play(animation)
 
 var check_moves = []
 
@@ -27,12 +27,13 @@ func _ready():
 	add_to_group("moving")
 
 	
-func action(pos, move_type,  tick = 0):
+func action(pos, move_type,  tick = 0) -> bool:
 	
 	if move_dir == Vector2.ZERO:
 		emit_signal("fail")
-		return
+		return false
 	emit_signal("hit")
+	return true
 	
 	
 signal capture

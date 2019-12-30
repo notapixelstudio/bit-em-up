@@ -75,7 +75,7 @@ rotation = 0.785398
 visibility_mode = 1
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 46.6667, 203.333 )
+position = Vector2( 176.667, 183.333 )
 [connection signal="gameover" from="." to="." method="_on_World_gameover" flags=6]
 [connection signal="tick" from="CanvasLayer/RhythmControl" to="." method="_on_tick"]
 [connection signal="fail" from="Player" to="CanvasLayer/RhythmControl" method="_on_Player_fail"]

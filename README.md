@@ -2,13 +2,10 @@
 
 Simple prototype for a rhythm game.
 
-# How to use it
+## How to use it
 
 You can setup a song in the `RhythmControl` Node and setup the BPM (Default is 120)
 Controls are keyboards UP-DOWN-LEFT-RIGHT
-
-
-
 
 ## Credits
 

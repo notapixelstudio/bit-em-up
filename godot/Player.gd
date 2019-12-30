@@ -66,14 +66,20 @@ func check_key(event, k):
 		keys[k] = false
 	
 # CONTROL KEYS
-func get_action():
+func tick(animation="Dance"):
 	move_dir.y = -int(keys['left']) + int(keys['right'])
 	move_dir.x = -int(keys['down']) + int(keys['up'])
 	label.text = ""
+	label.modulate = Color(1,1,1)
 	for k in keys:
 		if keys[k]:
 			label.text = k
-	action(move_dir, "input")
+	if action(move_dir, "input"):
+		.tick()
+	else:
+		.tick("Miss")
+		label.text = "MISS!"
+		label.modulate = Color(1,0,0)
 	return move_dir
 
 func _on_TouchScreenButton4_pressed():

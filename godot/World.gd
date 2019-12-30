@@ -27,7 +27,6 @@ func _on_tick():
 	
 	count_tick+=1
 	player.tick()
-	print(player.get_action())
 
 
 func _on_Player_winner():
