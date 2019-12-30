@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://Piece.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/UIrhythm/RhythmControl.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/audio/new_piece.ogg" type="AudioStream" id=4]
+[ext_resource path="res://HUD/UIrhythm/Effects/fail.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+PIECE_DEF_JSON = "res://logic/piece_def.gd"
+piece_scene = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RhythmControl" parent="CanvasLayer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = -656.0
+margin_right = 0.0
+margin_bottom = -626.0
+track = ExtResource( 4 )
+fail_scene = ExtResource( 5 )
+
+[node name="Stuff" type="Node2D" parent="CanvasLayer"]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 96, 462 )
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 32, 76 )
+rotation = 3.92699
+visibility_mode = 1
+
+[node name="TouchScreenButton9" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 64, 128 )
+rotation = 3.14159
+action = "ui_left"
+visibility_mode = 1
+
+[node name="TouchScreenButton11" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 76, 160 )
+rotation = 2.35619
+visibility_mode = 1
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 64, 64 )
+rotation = 4.71239
+action = "ui_up"
+visibility_mode = 1
+
+[node name="TouchScreenButton7" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+visible = false
+position = Vector2( 64, 64 )
+scale = Vector2( 0.626816, 0.626816 )
+visibility_mode = 1
+
+[node name="TouchScreenButton12" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 128, 128 )
+rotation = 1.5708
+action = "ui_down"
+visibility_mode = 1
+
+[node name="TouchScreenButton6" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 116, 32 )
+rotation = 5.49779
+visibility_mode = 1
+
+[node name="TouchScreenButton8" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 128, 64 )
+action = "ui_right"
+visibility_mode = 1
+
+[node name="TouchScreenButton10" type="TouchScreenButton" parent="CanvasLayer/Stuff"]
+position = Vector2( 159, 115 )
+rotation = 0.785398
+visibility_mode = 1
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 46.6667, 203.333 )
+[connection signal="gameover" from="." to="." method="_on_World_gameover" flags=6]
+[connection signal="tick" from="CanvasLayer/RhythmControl" to="." method="_on_tick"]
+[connection signal="hit" from="Player" to="CanvasLayer/RhythmControl" method="_on_Player_hit"]
