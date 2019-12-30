@@ -2,9 +2,9 @@
 
 [ext_resource path="res://HUD/UIrhythm/RhythmControl.gd" type="Script" id=1]
 [ext_resource path="res://HUD/UIrhythm/Effects/hit_confirm.tscn" type="PackedScene" id=2]
-[ext_resource path="res://HUD/UIrhythm/slider.png" type="Texture" id=3]
-[ext_resource path="res://HUD/UIrhythm/target.png" type="Texture" id=4]
-[ext_resource path="res://assets/audio/new_piece.ogg" type="AudioStream" id=5]
+[ext_resource path="res://HUD/UIrhythm/Effects/fail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/UIrhythm/slider.png" type="Texture" id=4]
+[ext_resource path="res://HUD/UIrhythm/target.png" type="Texture" id=5]
 
 [node name="RhythmControl" type="Control"]
 anchor_top = 1.0
@@ -17,6 +17,7 @@ margin_bottom = -20.0
 rect_clip_content = true
 script = ExtResource( 1 )
 hit_scene = ExtResource( 2 )
+fail_scene = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -30,30 +31,29 @@ editor/display_folded = true
 position = Vector2( 142.328, 46.776 )
 
 [node name="slider1" type="Sprite" parent="right"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="slider2" type="Sprite" parent="right"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="left" type="Position2D" parent="."]
 editor/display_folded = true
 position = Vector2( 144.318, 45.4492 )
 
 [node name="slider1" type="Sprite" parent="left"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="slider2" type="Sprite" parent="left"]
 position = Vector2( 141.972, 44.4492 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="center" type="Position2D" parent="."]
 position = Vector2( 143.655, 42.132 )
 
 [node name="target" type="Sprite" parent="center"]
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="SoundtrackBeat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
 volume_db = -10.0
 
 [node name="MetronomeTimer" type="Timer" parent="."]

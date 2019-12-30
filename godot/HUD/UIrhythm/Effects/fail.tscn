@@ -45,5 +45,4 @@ autoplay = "explode"
 anims/explode = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="destroy"]
